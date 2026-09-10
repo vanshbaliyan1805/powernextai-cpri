@@ -27,8 +27,8 @@ X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_st
 
 # 4. Train the Gradient Boosting Regressor on all data
 gbr_full = GradientBoostingRegressor(
-    n_estimators=100, 
-    learning_rate=0.1, 
+    n_estimators=740, 
+    learning_rate=0.07, 
     max_depth=3, 
     random_state=42
 )
