@@ -33,8 +33,10 @@ rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs
 rf_classifier.fit(X_train, y_train)
 
 # 6. Evaluate Performance Parameters
-val_predictions = rf_classifier.predict(X_val)
 val_probabilities = rf_classifier.predict_proba(X_val)[:, 1] # Probabilities for ROC-AUC
+custom_threshold = 0.75
+val_predictions = (val_probabilities >= custom_threshold).astype(int)
+
 
 
 
