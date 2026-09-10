@@ -20,10 +20,9 @@ df['Validity_Binary'] = df['Validity_Label'].map({'Valid': 1, 'Invalid': 0})
 df['Sensor_S1'] = df['Sensor_S1'].fillna(-999)
 df['Sensor_S2'] = df['Sensor_S2'].fillna(-999)
 df['Sensor_S3'] = df['Sensor_S3'].fillna(-999)
-df['Sensor_S4'] = df['Sensor_S4'].fillna(df['Sensor_S4'].median())
 
 # 4. Prepare features and target
-X = df.drop(columns=['Test_ID', 'Validity_Label', 'Validity_Binary', 'Reference_Parameter'])
+X = df.drop(columns=['Test_ID', 'Validity_Label', 'Validity_Binary', 'Reference_Parameter', 'Sensor_S4'])
 y = df['Validity_Binary']
 
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)

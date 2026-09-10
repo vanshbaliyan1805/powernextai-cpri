@@ -29,7 +29,7 @@ def main():
     print("Running Validity Classification...")
     clf_preds = validity_classifier.predict(X_clf)
     # Map binary predictions back to string labels ('Valid' / 'Invalid')
-    df_test['Validity_Label'] = ['Valid' if p == 1 else 'Invalid' for p in clf_preds]
+    df_test['Valid/Invalid'] = ['Valid' if p == 1 else 'Invalid' for p in clf_preds]
 
     # 4. Prepare features for the Regressor
     # (Uses median imputation for S1, S2, S3 to avoid breaking regression calculations)
@@ -46,7 +46,7 @@ def main():
 
     # 5. Format final output structure (Test_ID, Predicted_Reference_Parameter, Validity_Label)
     # Matching the exact format expected by the evaluation pipeline
-    submission_df = df_test[['Test_ID', 'Predicted_Reference_Parameter', 'Validity_Label']]
+    submission_df = df_test[['Test_ID', 'Predicted_Reference_Parameter', 'Valid/Invalid']]
 
     # 6. Save to CSV
     submission_df.to_csv(output_filename, index=False)
